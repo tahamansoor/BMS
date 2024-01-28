@@ -5,6 +5,12 @@ import { UnknownError } from "../constructors/error.constructors";
 
 const prismaClient =  new PrismaClient()
 
+/**
+ * 
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 async function createSale (req:Request,res:Response) {
 try {
     const {isFromStock,productId,soldAt} = req.body
@@ -30,3 +36,16 @@ try {
 
 
 }
+
+async function getSales(req:Request,res:Response) {
+    try {
+        const sales = prismaClient.sale.findMany()
+        res.send(new SuccessResponse('successfuly fetched sales',{sales},))
+        
+    } catch (error:any) {
+        res.send(new UnknownError(error.message))
+        
+    }
+    
+}
+export {createSale,getSales}

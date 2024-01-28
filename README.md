@@ -17,9 +17,8 @@ This repository contains the backend for a Business Management System (BMS) buil
 * Provides programmatic access to business data, such as:
     * Customers
     * Products
-    * Orders
     * Inventory
-    * (Add specific functionalities relevant to your project)
+    * Sales
 * Enables other applications to interact with the system through well-defined APIs
 
 **What it doesn't do:**

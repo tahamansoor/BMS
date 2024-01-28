@@ -3,6 +3,13 @@ import { UnknownError } from "../constructors/error.constructors";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { SuccessResponse } from "../constructors/response.contructors";
 const prismaClient = new PrismaClient()
+
+/**
+ * create or update stock
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 async function createOrUpdateStock(req:Request,res:Response) {
     try {
         const {quantity,productId} = req.body
@@ -31,21 +38,25 @@ async function createOrUpdateStock(req:Request,res:Response) {
     
 }
 
+/**
+ * delete stock
+ * @param req 
+ * @param res 
+ */
 async function deleteStock(req:Request,res:Response){
     try{   
-    const {productId , stockId } = req.body
-    if (!(productId && stockId)){
+    const { id } = req.params
+    if (!id){
         throw new Error ('Product id or stock id is required ')
     }
-    let query: Prisma.StockDeleteArgs = {where:{
-        ...(productId && {productId: productId}),
-        ...(stockId && {id:stockId})
-    }}
-
-
+    let query: Prisma.StockDeleteArgs = {
+        where:{
+        id:id
+        }}
+    
     await prismaClient.stock.delete(query)
 }catch(error:any){
-    throw new UnknownError(error.message)
+    res.send(new UnknownError(error.message))
 
 }
     

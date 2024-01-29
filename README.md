@@ -32,7 +32,7 @@ This repository contains the backend for a Business Management System (BMS) buil
 2. Install dependencies: `npm install`
 3. Configure connection details for MySQL in `.env` file
 4. Run the server: `npm run start`
-5. Explore the API documentation: `http://localhost:3000/api-docs`
+5. Explore the API documentation: `http://localhost:3000/docs`
 
 **Contributing:**
 

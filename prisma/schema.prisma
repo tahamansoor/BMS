@@ -3,11 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
 enum Roles {
+  HEAD_ADMIN
   ADMIN
   USER
   ACCOUNT_HOLDER
@@ -18,7 +19,7 @@ model User {
   name     String
   userName String @unique()
   password String
-  Role     Roles  @default(ADMIN)
+  role     Roles  @default(USER)
 }
 
 model Category {

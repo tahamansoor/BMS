@@ -1,75 +1,79 @@
-import express from 'express'
-import { signIn, signUp } from './user'
-import { authMiddleware } from '../middleware/authentication.middleware'
+import express from "express";
+import { createUser, signIn } from "./user";
+import { authMiddleware } from "../middleware/authentication.middleware";
 
-const router = express.Router()
+const router = express.Router();
 
-    /** POST Methods */
-    /**
-     * @openapi
-     * '/user/sign-up':
-     *  post:
-     *     tags:
-     *     - User Module
-     *     summary: sign up
-     *     requestBody:
-     *      required: true
-     *      content:
-     *        application/json:
-     *           schema:
-     *            type: object
-     *            required:
-     *              - userName
-     *              - name
-     *              - password
-     *              - role
-     *            properties:
-     *              userName:
-     *                type: string
-     *                default: johndoe 
-     *              name:
-     *                type: string
-     *                default: John doe
-     *              password:
-     *                type: string
-     *                default: johnDoe20!@
-     *              role:
-     *                 type: enum
-     *                 default: ADMIN
-     *     responses:
-     *      200:
-     *        description: Created
-     */
-router.post('/sign-up',signUp)
+/** POST Methods */
+/**
+ * @openapi
+ * '/user/create-user':
+ *  post:
+ *     tags:
+ *     - User Module
+ *     summary: create user
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *            type: object
+ *            required:
+ *              - userName
+ *              - name
+ *              - password
+ *              - role
+ *            properties:
+ *              userName:
+ *                type: string
+ *                default: johndoe
+ *              name:
+ *                type: string
+ *                default: John doe
+ *              password:
+ *                type: string
+ *                default: johnDoe20!@
+ *              role:
+ *                 type: enum
+ *                 default: ACCOUNT_HOLDER
+ *     security:
+ *        - BearerAuth: []
+ *     responses:
+ *      200:
+ *        description: Created
+ */
+router.post("/create-user", authMiddleware, createUser);
 
-   /** POST Methods */
-    /**
-     * @openapi
-     * '/user/sign-in':
-     *  post:
-     *     tags:
-     *     - User Module
-     *     summary: sign in
-     *     requestBody:
-     *      required: true
-     *      content:
-     *        application/json:
-     *           schema:
-     *            type: object
-     *            required:
-     *              - userName
-     *              - password
-     *            properties:
-     *              userName:
-     *                type: string
-     *                default: johndoe 
-     *              password:
-     *                type: string
-     *                default: johnDoe20!@
-     *     responses:
-     *      200:
-     *        description: signed in
-     */
-router.post('/sign-in', authMiddleware,signIn)
+/** POST Methods */
+/**
+ * @openapi
+ * '/user/sign-in':
+ *  post:
+ *     tags:
+ *     - User Module
+ *     summary: sign in
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *           schema:
+ *            type: object
+ *            required:
+ *              - userName
+ *              - password
+ *            properties:
+ *              userName:
+ *                type: string
+ *                default: johndoe
+ *              password:
+ *                type: string
+ *                default: johnDoe20!@
+ *     security:
+ *        - BearerAuth: []
+ *     responses:
+ *      200:
+ *        description: signed in
+ */
+router.post("/create-user", authMiddleware, signIn);
 
 export default router;

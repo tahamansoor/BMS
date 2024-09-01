@@ -1,8 +1,8 @@
-import express from 'express'
-import { createSale, getSales } from './sale'
-import { authMiddleware } from '../middleware/authentication.middleware'
+import express from "express";
+import { createSale, getSales } from "./sale";
+import { authMiddleware } from "../middleware/authentication.middleware";
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * @swagger
@@ -36,7 +36,7 @@ const router = express.Router()
  *       200:
  *         description: Sale created successfully
  */
-router.post('/create-sale',authMiddleware,createSale)
+router.post("/create-sale", authMiddleware, createSale);
 
 /**
  * @swagger
@@ -54,6 +54,6 @@ router.post('/create-sale',authMiddleware,createSale)
  *       400:
  *         description: Bad request, invalid input
  */
-router.get('/',authMiddleware,getSales)
+router.get("/", authMiddleware, getSales);
 
-export default router
+export default router;

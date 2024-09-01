@@ -1,8 +1,7 @@
-import express from 'express'
-import { createProduct, getProduct } from './product'
-import { authMiddleware } from '../middleware/authentication.middleware'
-const router = express.Router()
-
+import express from "express";
+import { createProduct, getProduct } from "./product";
+import { authMiddleware } from "../middleware/authentication.middleware";
+const router = express.Router();
 
 /**
  * @swagger
@@ -43,7 +42,7 @@ const router = express.Router()
  *       400:
  *         description: Bad request, invalid input
  */
-router.post('/create-product', authMiddleware,createProduct)
+router.post("/create-product", authMiddleware, createProduct);
 /**
  * @swagger
  * /product/get-product:
@@ -68,6 +67,6 @@ router.post('/create-product', authMiddleware,createProduct)
  *         description: Bad request, invalid input
  */
 
-router.get('/get-product',authMiddleware,getProduct)
+router.get("/get-product", authMiddleware, getProduct);
 
 export default router;

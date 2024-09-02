@@ -1,6 +1,6 @@
 ## BMS: Business Management System Backend
 
-This repository contains the backend for a Business Management System (BMS) built on Node.js, TypeScript, and Prisma with MySQL. 
+This repository contains the backend for a Business Management System (BMS) built on Node.js, TypeScript, and Prisma with Postgres. 
 
 **What it is:**
 

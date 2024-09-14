@@ -69,7 +69,8 @@
         "./**/*"
     ],
     "exclude": [
-        "./dist/**/*" // This is what fixed it!
+        "./dist/**/*", // This is what fixed it!
+	"./*.json"
     ]
 
 }
